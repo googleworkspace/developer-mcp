@@ -1,0 +1,79 @@
+{
+  "name": "@googleworkspace/developer-mcp",
+  "version": "0.7.0",
+  "description": "An MCP (Model Context Protocol) server for accessing and searching Google Workspace documentation, enabling AI assistants and tools to retrieve up-to-date information.",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Justin Poehnelt",
+    "email": "jpoehnelt@google.com",
+    "url": "https://justin.poehnelt.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/googleworkspace/developer-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/googleworkspace/developer-mcp/issues"
+  },
+  "homepage": "https://github.com/googleworkspace/developer-mcp",
+  "keywords": [
+    "google workspace",
+    "mcp",
+    "documentation",
+    "search",
+    "api",
+    "developer tools",
+    "ai assistant"
+  ],
+  "type": "module",
+  "bin": {
+    "googleworkspace-developer-mcp": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "changeset": "changeset",
+    "changeset:empty": "pnpm changeset --empty",
+    "check": "tsc --noEmit",
+    "ci:release": "changeset publish",
+    "ci:version": "changeset version && pnpm install --lockfile-only --engine-strict=false",
+    "dev": "tsx watch src/index.ts",
+    "format": "prettier --write . && biome check --write .",
+    "lint": "prettier --check . && biome check",
+    "prepare": "husky",
+    "test": "vitest --passWithNoTests"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.11.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@changesets/cli": "^2.29.4",
+    "@types/node": "^24.3.1",
+    "@vitest/coverage-v8": "^3.2.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.0",
+    "prettier": "^3.5.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.2",
+    "vitest": "^3.2.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "packageManager": "pnpm@9.3.0",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,ts}": [
+      "biome check --write"
+    ],
+    "**/*.{html,yaml,yml,md}": [
+      "prettier --write"
+    ]
+  }
+}
