@@ -34,10 +34,11 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import pkg from "../package.json" with { type: "json" };
 
+const MCP_SERVER_URL =
+	process.env.MCP_SERVER_URL ?? "https://workspace-developer.goog/mcp";
+
 async function main() {
-	const transport = new StreamableHTTPClientTransport(
-		new URL("http://34.102.165.10/mcp"),
-	);
+	const transport = new StreamableHTTPClientTransport(new URL(MCP_SERVER_URL));
 	const client = new Client(
 		{
 			name: pkg.name,
