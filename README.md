@@ -1,3 +1,7 @@
+**NOTE:** See https://developers.google.com/workspace/guides/build-with-llms.
+
+---
+
 # @googleworkspace/developer-mcp
 
 [![npm version](https://img.shields.io/npm/v/%40googleworkspace%2Fdeveloper-mcp)](https://www.npmjs.com/package/@googleworkspace/developer-mcp)
